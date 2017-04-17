@@ -41,7 +41,7 @@
       react-native run-ios
       ```
   - Sometimes when things are acting strange you can clean your builds
-    - android
+    - ios
       ```
       rm -rf ios/build
       ```
