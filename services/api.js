@@ -1,12 +1,13 @@
-export default class API {
-  constructor(deviceId, key) {
-    this.particleDevices = {}
-    this.key = key
+
+class API {
+  constructor() {
+    this.particleDevices = {};
     this.particleBaseUrl = 'https://api.particle.io/v1';
+    this.token = '';
   }
 
-  setupDevices(devices)
-
+  particleLogin(username, password) {
+  }
   urlEncodedBody(body) {
     formBody = [];
     for (let property in body) {
@@ -39,3 +40,5 @@ export default class API {
   //   })
   // }
 }
+
+export const ApiService = new API()

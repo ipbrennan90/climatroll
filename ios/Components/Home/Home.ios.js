@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import { styles } from './Styles'
 
+import { ApiService } from '../../../services/api'
+
 export default class Home extends Component {
 
   constructor(props) {
