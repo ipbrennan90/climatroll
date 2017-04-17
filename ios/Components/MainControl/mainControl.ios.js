@@ -19,6 +19,8 @@ export default class climatroll extends Component {
   constructor () {
     super()
     this.Api = new API(PARTICLE_DEVICE, PARTICLE_KEY)
+    this._onPressOn = this._onPressOn.bind(this);
+    this._onPressOff = this._onPressOff.bind(this);
   }
 
   _onPressOn() {
@@ -32,10 +34,10 @@ export default class climatroll extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableHighlight style={[styles.button, styles.blue]} onPress={this._onPressOn.bind(this)}>
+        <TouchableHighlight style={[styles.button, styles.blue]} onPress={this._onPressOn}>
           <Text style={styles.buttonText} >Turn AC on</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={[styles.button, styles.red]} onPress={this._onPressOff.bind(this)}>
+        <TouchableHighlight style={[styles.button, styles.red]} onPress={this._onPressOff}>
           <Text style={styles.buttonText} >Turn AC off</Text>
         </TouchableHighlight>
       </View>

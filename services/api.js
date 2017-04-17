@@ -31,11 +31,11 @@ export default class API {
     })
   }
 
-  particleGet(device, endpoint) {
-    const url = `${this.baseUrl}devices/${device.id}/${endpoint}?access_token=${this.key}`;
-    fetch(url, {
-      method: 'GET',
-      headers
-    })
-  }
+  // particleGet(device, endpoint) {
+  //   const url = `${this.baseUrl}devices/${device.id}/${endpoint}?access_token=${this.key}`;
+  //   fetch(url, {
+  //     method: 'GET',
+  //     headers
+  //   })
+  // }
 }
