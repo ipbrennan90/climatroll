@@ -10,7 +10,6 @@ import { PARTICLE_KEY, CLIENT_ID, CLIENT_SECRET } from 'react-native-dotenv';
 
 	  particleLogin(username, password) {
 	    return new Promise((resolve, reject) => {
-	      console.log(password)
 	      const url = `https://api.particle.io/oauth/token`
 	      fetch("https://api.particle.io/oauth/token", {
 	        method: 'POST',
@@ -34,6 +33,36 @@ import { PARTICLE_KEY, CLIENT_ID, CLIENT_SECRET } from 'react-native-dotenv';
 	      })
 	    })
 	  }
+
+    particleListDevices(accessToken) {
+      return new Promise((resolve, reject) => {
+        const url = `${this.particleBaseUrl}/devices`;
+        fetch(url, {
+          method: 'GET',
+          headers: this.setHeaders(accessToken)
+        })
+        .then((response) => response.json())
+        .then((responseJson) => resolve(responseJson))
+        .catch((error) => {
+          reject(error);
+        })
+      })
+    }
+
+    particleGetDeviceInfo(accessToken, deviceId) {
+      return new Promise((resolve, reject) => {
+        const url = `${this.particleBaseUrl}/devices/${deviceId}`
+        fetch(url, {
+          method: 'GET',
+          headers: this.setHeaders(accessToken)
+        })
+        .then((response) => response.json())
+        .then((responseJson) => resolve(responseJson))
+        .catch((error) => {
+          reject(error);
+        })
+      })
+    }
 
 
 	  urlEncodedBody(body) {
@@ -60,6 +89,14 @@ import { PARTICLE_KEY, CLIENT_ID, CLIENT_SECRET } from 'react-native-dotenv';
 	      // TODO: need to add error handling here
 	    })
 	  }
+
+    setHeaders(accessToken) {
+      return {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${this.key}`,
+        'Content-Type': this.defaultContentType
+      };
+    }
 
 
 	  // particleGet(device, endpoint) {

@@ -17,6 +17,10 @@
 
   - At the time that I built this [react-navigation](https://reactnavigation.org/), although one of, if not the most popular react-native navigation libraries, was having some issues so unless resolved I had to point to this specific commit when installing the dependency: https://github.com/react-community/react-navigation.git#7edd9a7
 
+  - TouchableHighlight components cannot have multiple children, haven't looked into why this is true but there is a workaround, you can build a custom component to house the multiple children you may want to include, for me it was having text and a loader inside of the touchableHighlight. You will get an Invariant Violation error when you attempt this. You can fix this error by using setNativeProps function that comes out of the box with the React.Component class. More detailed solution [here](http://stackoverflow.com/questions/31741705/error-invariant-violation-touchable-child-must-either-be-native-or-forward-set)
+
+  - the particle-api-js library does not work with react-native, I had to handroll the Oauth and other flows. I will try to build out a library that works with react-native in my free time but in the meantime checkout the [api service](https://github.com/ipbrennan90/climatroll/blob/master/services/api.js)
+
 # Helpful Commands
 
   - When you remove a dependency react-native sometimes gets confused, in order to remedy the crash a helpful group of commands is:
@@ -53,3 +57,11 @@
 # Helpful Links
 
   - [Temp Sensor Wiring](http://bildr.org/2011/07/ds18b20-arduino/)
+
+# Using Realm JS
+
+  - [Start Here](https://realm.io/docs/javascript/latest/)
+
+  - This library gave me a lot of trouble on install for some reason, I highly recommend starting a realm branch before getting started, I installed multiple times and for some reason it kept giving me a Realm Constructor not found even though the linking was successful, started a new branch and it magically worked ¯\\_(ツ)_/¯. If it happens to you and opening a new branch doesn't work try referencing [this](https://realm.io/docs/javascript/latest/index.html#missing-realm-constructor) section of their docs.
+
+  - when you update your realm instance's schema in development you'll most likely get a 'default.realm' already opened on current thread with different schema error. To remedy this close all processes, simulators, etc. and rebuild the project.

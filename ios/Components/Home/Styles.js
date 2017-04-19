@@ -22,6 +22,12 @@ export const styles = StyleSheet.create({
     color: '#FFFFFF',
     marginTop: 11
   },
+  loader: {
+    marginTop: 11
+  },
+  error: {
+    color: '#BF0000'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
