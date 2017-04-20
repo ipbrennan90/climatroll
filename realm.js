@@ -1,7 +1,7 @@
 import Realm from 'realm';
 import { DeviceFunctionSchema } from './models/DeviceFunction';
 import { VariableSchema } from './models/Variable';
-import { DeviceSchema } from './models/Device';
+import { Device } from './models/Device';
 import { UserSchema } from './models/User';
 import { AccountSchema } from './models/Account';
 
@@ -11,7 +11,7 @@ export const realm = new Realm({
   schema: [
     DeviceFunctionSchema,
     VariableSchema,
-    DeviceSchema,
+    Device.schema,
     UserSchema,
     AccountSchema
   ],

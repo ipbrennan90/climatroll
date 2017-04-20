@@ -99,13 +99,19 @@ import { PARTICLE_KEY, CLIENT_ID, CLIENT_SECRET } from 'react-native-dotenv';
     }
 
 
-	  // particleGet(device, endpoint) {
-	  //   const url = `${this.baseUrl}devices/${device.id}/${endpoint}?access_token=${this.key}`;
-	  //   fetch(url, {
-	  //     method: 'GET',
-	  //     headers
-	  //   })
-	  // }
+	  particleGet(accessToken, deviceId, endpoint) {
+      return new Promise((resolve, reject) => {
+        debugger;
+        const url = `${this.particleBaseUrl}/devices/${deviceId}/${endpoint}`;
+  	    fetch(url, {
+  	      method: 'GET',
+  	      headers: this.setHeaders(accessToken)
+  	    })
+        .then((response) => response.json())
+        .then((responseJson) => resolve(responseJson))
+        .catch((error) => reject(error))
+      });
+	  }
 	}
 
 
